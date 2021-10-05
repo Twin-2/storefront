@@ -1,6 +1,6 @@
 {
   "name": "virtual-store",
-  "homepage": "https://twin-2.github.io/todo-app/",
+  "homepage": "https://twin-2.github.io/storefront/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
