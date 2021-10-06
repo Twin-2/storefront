@@ -4,6 +4,8 @@
 
 This is a React app build to practice working with Redux. This app is a basic online store and will have features of products, categories, and carts with all state managed with redux.
 
+Deployed on [GitHub Pages](https://twin-2.github.io/storefront/)
+
 ## Version 1.0.1
 
 1.0.0 - 10/4/2021 - Basic structure is up. No styling has been added.
