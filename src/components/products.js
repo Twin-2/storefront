@@ -1,24 +1,44 @@
 import { connect } from "react-redux";
+import { addToCart } from "../reduxStore/reducers/shoppingCart";
+import { Button, Card } from "@mui/material";
 
 function Products(props) {
-  console.log("products", props.products);
+  function addToCart(item) {
+    if (!props.shoppingCart.cart.includes(item)) {
+      props.addToCart(item);
+    }
+  }
+
   return (
-    <section>
+    <main>
       <h1>{props.category.activeCategory} </h1>
-      <nav>
-        {props.products.products.map((item) => (
-          <div key={item.name}>
-            {item.name}: {item.description}, {item.inventory}
-          </div>
+      <div className="products">
+        {props.products.activeProducts.map((item, idx) => (
+          <Card className="card" variant="outlined" raised={true} key={idx}>
+            {item.name}: {item.description}
+            <br />
+            In Stock: {item.inventory}
+            <br />
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => addToCart(item)}
+            >
+              Add to cart
+            </Button>
+          </Card>
         ))}
-      </nav>
-    </section>
+      </div>
+    </main>
   );
 }
 
 const mapStateToProps = (state) => ({
   products: state.productReducer,
   category: state.categoryReducer,
+  shoppingCart: state.shoppingCart,
 });
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = { addToCart };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
