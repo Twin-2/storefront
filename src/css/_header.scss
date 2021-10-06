@@ -1,0 +1,16 @@
+.header {
+  background-color: #444;
+  display: flex;
+  justify-content: center;
+  color: ivory;
+  height: 40px;
+  text-align: center;
+  font-size: 30px;
+  align-items: center;
+
+  button {
+    position: absolute;
+    right: 10px;
+    top: 0;
+  }
+}

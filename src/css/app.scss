@@ -1,0 +1,21 @@
+@import "./reset";
+@import "./header";
+@import "./footer";
+@import "./categories";
+@import "./products";
+@import "./simpleCart";
+
+html,
+body {
+  background-color: rgb(229, 235, 180);
+  color: rgb(92, 88, 87);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+
+  #root {
+    height: 100%;
+    flex: 1;
+  }
+}

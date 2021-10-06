@@ -29,6 +29,7 @@ let initialState = {
       inventory: 1000,
     },
   ],
+  activeProducts: [],
 };
 
 // a reducer is a pure function that is meant to eval an action type
@@ -37,10 +38,26 @@ const categoryReducer = (state = initialState, action) => {
 
   switch (type) {
     case "ACTIVATE_CATEGORY":
-      const filteredProducts = initialState.products.filter(
+      const filteredProducts = state.products.filter(
         (product) => product.category === payload
       );
-      return { products: filteredProducts };
+      return { ...state, activeProducts: filteredProducts };
+    case "ADD_TO_CART":
+      state.products.map((item) => {
+        if (item === payload) {
+          item.inventory--;
+        }
+        return item;
+      });
+      return state;
+    case "REMOVE_FROM_CART":
+      state.products.map((item) => {
+        if (item === payload) {
+          item.inventory++;
+        }
+        return item;
+      });
+      return state;
     default:
       return state;
   }

@@ -1,18 +1,19 @@
 import { connect } from "react-redux";
 import { activate } from "../reduxStore/reducers/categoryReducer";
+import { Tabs, Tab } from "@mui/material";
 
 function Categories(props) {
-  console.log("categories", props.categories.categories);
   return (
     <section>
       <h1>Product Categories</h1>
-      <nav>
+      <Tabs textColor="primary" indicatorColor="primary">
         {props.categories.categories.map((category, idx) => (
-          <span onClick={() => props.activate(category.name)} key={idx}>
-            {category.name}| |
-          </span>
+          <Tab
+            label={category.name}
+            onClick={() => props.activate(category.name)}
+          />
         ))}
-      </nav>
+      </Tabs>
     </section>
   );
 }

@@ -2,8 +2,13 @@ import { createStore, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import categoryReducer from "./reducers/categoryReducer";
 import productReducer from "./reducers/productReducer";
+import shoppingCart from "./reducers/shoppingCart";
 
-let reducers = combineReducers({ categoryReducer, productReducer });
+let reducers = combineReducers({
+  categoryReducer,
+  productReducer,
+  shoppingCart,
+});
 
 const store = () => {
   return createStore(reducers, composeWithDevTools());

@@ -25,8 +25,8 @@ const categoryReducer = (state = initialState, action) => {
 
   switch (type) {
     case "ACTIVATE_CATEGORY":
-      state.activeCategory = payload;
-      return state;
+      //direct manipulation. change.
+      return { ...state, activeCategory: payload };
     default:
       return state;
   }
