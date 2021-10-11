@@ -1,8 +1,9 @@
 import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { Paper } from "@mui/material";
 
 function Footer() {
   return (
-    <footer>
+    <Paper className="footer" elevation={2}>
       &copy; 2021 {"    "}
       <a href="https://github.com/Twin-2">
         <BsGithub />
@@ -11,7 +12,7 @@ function Footer() {
       <a href="https://www.linkedin.com/in/david-whitmore-501273160/">
         <BsLinkedin />
       </a>
-    </footer>
+    </Paper>
   );
 }
 

@@ -1,22 +1,8 @@
+import axios from "axios";
+
 let initialState = {
-  categories: [
-    {
-      name: "Food",
-      displayName: "Foods",
-      description: "all thingd edible",
-    },
-    {
-      name: "Clothes",
-      displayName: "Clothing",
-      description: "Cover yourself!",
-    },
-    {
-      name: "Games",
-      displayName: "Fun and Games",
-      description: "All types of games for all types of players",
-    },
-  ],
-  activeCategory: "Food",
+  categories: [],
+  activeCategory: "",
 };
 
 // a reducer is a pure function that is meant to eval an action type
@@ -25,11 +11,24 @@ const categoryReducer = (state = initialState, action) => {
 
   switch (type) {
     case "ACTIVATE_CATEGORY":
-      //direct manipulation. change.
       return { ...state, activeCategory: payload };
+    case "GET_CATEGORIES":
+      return { ...state, categories: payload };
     default:
       return state;
   }
+};
+
+export const asyncGetCategories = () => async (dispatch) => {
+  const response = await axios.get(process.env.REACT_APP_CATEGORIES_API);
+  dispatch(getCategories(response.data.results));
+};
+
+const getCategories = (payload) => {
+  return {
+    type: "GET_CATEGORIES",
+    payload: payload,
+  };
 };
 
 // an action creator is a function that RETURNS an ACTION

@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 import { addToCart } from "../reduxStore/reducers/shoppingCart";
+import { asyncGetProducts } from "../reduxStore/reducers/productReducer";
 import { Button, Card } from "@mui/material";
+import { useEffect } from "react";
 
 function Products(props) {
   function addToCart(item) {
@@ -9,15 +11,19 @@ function Products(props) {
     }
   }
 
+  useEffect(() => {
+    props.asyncGetProducts(props.category.activeCategory);
+  }, [props.category.activeCategory]);
+
   return (
     <main>
       <h1>{props.category.activeCategory} </h1>
       <div className="products">
         {props.products.activeProducts.map((item, idx) => (
-          <Card className="card" variant="outlined" raised={true} key={idx}>
+          <Card className="card" key={idx}>
             {item.name}: {item.description}
             <br />
-            In Stock: {item.inventory}
+            In Stock: {item.inStock}
             <br />
             <Button
               variant="contained"
@@ -39,6 +45,6 @@ const mapStateToProps = (state) => ({
   shoppingCart: state.shoppingCart,
 });
 
-const mapDispatchToProps = { addToCart };
+const mapDispatchToProps = { addToCart, asyncGetProducts };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

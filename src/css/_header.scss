@@ -1,13 +1,16 @@
 .header {
-  background-color: #444;
+  background-color: #fff;
   display: flex;
   justify-content: center;
-  color: ivory;
+  color: #444;
   height: 40px;
   text-align: center;
   font-size: 30px;
   align-items: center;
 
+  h1 {
+    color: #444;
+  }
   button {
     position: absolute;
     right: 10px;
