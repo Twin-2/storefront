@@ -6,9 +6,10 @@ import { connect } from "react-redux";
 import { asyncGetCategories } from "../reduxStore/reducers/categoryReducer";
 
 function Storefront(props) {
+  const { asyncGetCategories } = props;
   useEffect(() => {
-    props.asyncGetCategories();
-  }, []);
+    asyncGetCategories();
+  }, [asyncGetCategories]);
 
   return (
     <>

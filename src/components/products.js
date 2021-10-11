@@ -11,9 +11,10 @@ function Products(props) {
     }
   }
 
+  const { category, asyncGetProducts } = props;
   useEffect(() => {
-    props.asyncGetProducts(props.category.activeCategory);
-  }, [props.category.activeCategory]);
+    asyncGetProducts(category.activeCategory);
+  }, [category.activeCategory, asyncGetProducts]);
 
   return (
     <main>
