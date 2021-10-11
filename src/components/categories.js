@@ -6,10 +6,11 @@ function Categories(props) {
   return (
     <section>
       <h1>Product Categories</h1>
-      <Tabs textColor="primary" indicatorColor="primary">
+      <Tabs value={false} textColor="primary" indicatorColor="primary">
         {props.categories.categories.map((category, idx) => (
           <Tab
             label={category.name}
+            key={idx}
             onClick={() => props.activate(category.name)}
           />
         ))}
